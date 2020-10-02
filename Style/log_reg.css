@@ -1,0 +1,25 @@
+body, main{
+    height: 100vh;
+}
+#form-register {
+    max-width: 30%;
+    min-width: 200px;
+}
+body {
+    background-color: #1f4e5f;
+}
+main {
+    background-color: white;
+    color: #1f4e5f;
+}
+
+#form-register input,.btn {
+    margin-top: 5px;
+    color: #1f4e5f;
+   border-color: #1f4e5f;
+}
+
+#form-register .btn {
+    background-color: #3b8686;
+    color: white;
+}

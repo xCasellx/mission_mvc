@@ -14,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -27,6 +28,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -44,7 +46,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601538696912</updated>
-      <workItem from="1601538697877" duration="4025000" />
+      <workItem from="1601538697877" duration="20527000" />
     </task>
     <servers />
   </component>
@@ -52,13 +54,23 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="540" y="176" key="NewPhpClassDialog" timestamp="1601549244309">
+    <state x="395" y="132" key="#Inspections" timestamp="1601559433486">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="540" y="176" key="NewPhpClassDialog/0.43.1536.821@0.43.1536.821" timestamp="1601549244309" />
-    <state x="604" y="377" key="NewPhpFileDialog" timestamp="1601550392780">
+    <state x="395" y="132" key="#Inspections/0.43.1536.821@0.43.1536.821" timestamp="1601559433486" />
+    <state x="540" y="176" key="NewPhpClassDialog" timestamp="1601553394618">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="604" y="377" key="NewPhpFileDialog/0.43.1536.821@0.43.1536.821" timestamp="1601550392780" />
+    <state x="540" y="176" key="NewPhpClassDialog/0.43.1536.821@0.43.1536.821" timestamp="1601553394618" />
+    <state x="568" y="370" key="NewPhpFileDialog" timestamp="1601575447321">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601575447321" />
+    <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821@0.43.1536.821" timestamp="1601555801030" />
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1601575035919">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601575035919" />
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821@0.43.1536.821" timestamp="1601558353342" />
   </component>
 </project>
