@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19cf8e18-3a92-486a-9f8d-07b34e620556" name="Default Changelist" comment="" />
+    <list default="true" id="19cf8e18-3a92-486a-9f8d-07b34e620556" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Script/sing-in.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/page404.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/View/sign-in.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/Config/router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Model/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Style/log_reg.css" beforeDir="false" afterPath="$PROJECT_DIR$/Style/log_reg.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/block/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/block/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/register.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,10 +26,15 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1iGf9IK3NqROt8qpg2n9xKJgBgt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,7 +43,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Api" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -35,8 +51,17 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\web\OpenServer\domains\mission_mvc\View" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web\OpenServer\domains\mission_mvc\Api" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -46,7 +71,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601538696912</updated>
-      <workItem from="1601538697877" duration="20527000" />
+      <workItem from="1601538697877" duration="44826000" />
+      <workItem from="1601882243940" duration="17418000" />
     </task>
     <servers />
   </component>
@@ -58,19 +84,28 @@
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="395" y="132" key="#Inspections/0.43.1536.821@0.43.1536.821" timestamp="1601559433486" />
+    <state x="617" y="282" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1601620248917">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="617" y="282" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601620248917" />
     <state x="540" y="176" key="NewPhpClassDialog" timestamp="1601553394618">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="540" y="176" key="NewPhpClassDialog/0.43.1536.821@0.43.1536.821" timestamp="1601553394618" />
-    <state x="568" y="370" key="NewPhpFileDialog" timestamp="1601575447321">
+    <state x="568" y="370" key="NewPhpFileDialog" timestamp="1601903189507">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601575447321" />
-    <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821@0.43.1536.821" timestamp="1601555801030" />
-    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1601575035919">
+    <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601903189507" />
+    <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821@0.43.1536.821" timestamp="1601892931238" />
+    <state x="425" y="208" key="run.anything.popup" timestamp="1601896091857">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601575035919" />
+    <state x="425" y="208" key="run.anything.popup/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601636907694" />
+    <state x="425" y="208" key="run.anything.popup/0.43.1536.821@0.43.1536.821" timestamp="1601896091857" />
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1601624496935">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601624496935" />
     <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821@0.43.1536.821" timestamp="1601558353342" />
   </component>
 </project>

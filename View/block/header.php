@@ -7,5 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="../../Script/bootstrap/bootstrap.js"></script>
+    <script src="../../Script/control.js" type="application/javascript"></script>
     <link rel="stylesheet" href="../../Style/bootstrap/bootstrap.min.css"  type="text/css">
 <body class="">
