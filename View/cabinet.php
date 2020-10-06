@@ -29,8 +29,21 @@
                 </div>
             </div>
         </div>
-        </div>
+        <div class="modal fade" id="myModal">
+            <div class=" modal-dialog" >
+                <div class="bg-dark modal-content p-0" >
+                    <div class="text-center text-light modal-header">
+                        <div class="container">
+                            <h4 class="modal-title">Edit</h4>
+                        </div>
+                    </div>
+                    <div class="bg-light modal-body" >
 
+                    </div>
+                    <div class="p-1 bg-dark modal-footer"></div>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="../Script/cabinet.js" type="application/javascript"></script>
     <script src="../Script/location.js" type="application/javascript"></script>

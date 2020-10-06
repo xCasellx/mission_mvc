@@ -10,7 +10,7 @@ class UserController
     {
     }
 
-    private function  PrintMessage($status,$message, $code , $data)
+    private function  PrintMessage($status, $message, $code , $data)
     {
         http_response_code($code);
         $smg = array(
@@ -24,31 +24,106 @@ class UserController
         exit();
     }
 
-    function actionEditData()
+    private  function  checkColumn($text)
+    {
+        $col = UserModal::GetDataColumn();
+        foreach ($col as $item) {
+            if($item === $text ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function actionEditImage()
     {
         session_start();
-        if($_SESSION["login"]){
+        if(isset($_SESSION["login"])) {
+            $image = array();
+            if(isset($_FILES["image"])) {
+                $image = $_FILES["image"];
+            }
+            else {
+                $this->PrintMessage("error","Image empty", 400 , null);
+            }
             $edit_id = $_SESSION["login"];
-            if(!empty($_POST)){
-                $edit_name = $_POST["edit_name"];
-                $edit_text = $_POST["edit_text"];
-                switch ($edit_name) {
-                    case "password":
-                        break;
-                    case  "email":
-                        break;
-                    case "date":
-                        break;
-                    case "number":
-                        break;
-                    default:
-                        break;
-                }
+            $fold_name = "user-".$edit_id;
+            $full_path =ROOT."/user-data/".$fold_name;
+            if ( !file_exists($full_path) ) {
+                $oldumask = umask(0);
+                mkdir($full_path, 0777, true);
+                umask($oldumask);
+            }
+            $tmp_name = $image["tmp_name"];
+            $full_path_image = $full_path . "/user-image.jpg";
+            move_uploaded_file($tmp_name, $full_path_image);
+            $user = new UserModal();
+            if($user->updateData("image", $fold_name, $edit_id)) {
+                $data = $user->GetUserData($edit_id);
+                $this->PrintMessage("success","Update success", 200 , $data);
+            }
+            else {
+                $this->PrintMessage("error","Error upd", 400 , null);
             }
         }
         else {
-            $this->PrintMessage("error","edit error", 200 , null);
+            $this->PrintMessage("error","Error ", 400 , null);
         }
+
+    }
+
+    function actionEditData()
+    {
+        session_start();
+        if($_SESSION["login"]) {
+            $edit_id = $_SESSION["login"];
+            $user = new UserModal();
+            if(!empty($_POST)){
+                $edit_name = $_POST["edit_name"];
+                $edit_text = $_POST["edit_text"];
+                if(!$this->checkColumn($edit_name)) {
+                    $this->PrintMessage("error","This field does not exist", 400 , null);
+                }
+                $error = "";
+                switch ($edit_name) {
+                    case "password":
+                        $password = $_POST["password"];
+                        $confirm_password = $_POST["confirm_password"];
+                        if (empty($password) && empty($confirm_password)) {
+                            $this->PrintMessage("error","Empty password", 400 , null);
+                        }
+                        if (!preg_match($this->pattern_password, $edit_text)) {
+                            $this->PrintMessage("error","The password must be at least 6 or more.
+                              Password must consist of letters of the Latin alphabet (A-z),
+                              numbers (0-9) and special characters.", 400 , null);
+
+                        }
+                        if (!$user->passwordVerify($password,$edit_id)) {
+                            $this->PrintMessage("error","Incorrect passwords.", 400 , null);
+                        }
+                        if ($edit_text !== $confirm_password) {
+                            $this->PrintMessage("error","Password mismatch.", 400 , null);
+                        }
+                        $edit_text = password_hash($edit_text, PASSWORD_BCRYPT);
+                        break;
+                    case "date":
+                        $temp_date = strtotime($edit_text);
+                        $temp_upd = strtotime((date('Y')-5).date('-m-d'));
+                        if ($temp_date > $temp_upd) {
+                            $this->PrintMessage("error","Wrong date.", 400 , null);
+                        }
+                        break;
+                    default:
+                        $edit_text = htmlspecialchars(strip_tags($edit_text));
+                        break;
+                }
+                if($user->updateData($edit_name, $edit_text, $edit_id)) {
+                    $data = $user->GetUserData($edit_id);
+                    $this->PrintMessage("success","Update success", 200 , $data);
+                }
+            }
+        }
+        $this->PrintMessage("error","edit error", 400 , null);
     }
 
     function actionSignIn()

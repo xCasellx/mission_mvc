@@ -14,7 +14,7 @@ class SiteController
         return false;
     }
     function actionTest(){
-
+        echo $_SERVER['HTTP_HOST'];
     }
 
     function  actionError404()

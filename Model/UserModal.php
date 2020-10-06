@@ -42,7 +42,22 @@ class UserModal
             foreach ($this->data_public as $value) {
                 $res[$value] = $row[$value];
             }
+            $res["image"] = "http://".$_SERVER['HTTP_HOST']."/img/".$res["image"]."/user-image.jpg";
             return $res;
+        }
+        return false;
+    }
+
+    function updateData($element, $new_text, $id)
+    {
+        $db = DataBase::getConnection();
+        $query = "UPDATE " . $this->table_name . " SET " .$element. " = :text WHERE id = :id";
+        $stmt = $db ->prepare($query);
+        $new_text = htmlspecialchars(strip_tags($new_text));
+        $stmt->bindParam(":text", $new_text);
+        $stmt->bindParam(":id", $id);
+        if ($stmt->execute()) {
+            return true;
         }
         return false;
     }
@@ -60,6 +75,22 @@ class UserModal
         return false;
     }
 
+    function  passwordVerify($password, $id)
+    {
+        $db = DataBase::getConnection();
+        $query = "SELECT password  FROM " . $this->table_name . " WHERE id = ?";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(1, $id);
+        $stmt->execute();
+        if ($stmt->rowCount() <= 0) {
+            return false;
+        }
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if(!password_verify($password , $user["password"])) {
+            return false;
+        }
+        return  true;
+    }
 
     function SignIn($email , $password)
     {

@@ -17,5 +17,5 @@ $("#register-form").submit(function() {
             printMessage("error",result.responseJSON.message,5000);
         }
     })
-    return false;
+    return fals
 })
