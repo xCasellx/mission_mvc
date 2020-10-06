@@ -24,6 +24,33 @@ class UserController
         exit();
     }
 
+    function actionEditData()
+    {
+        session_start();
+        if($_SESSION["login"]){
+            $edit_id = $_SESSION["login"];
+            if(!empty($_POST)){
+                $edit_name = $_POST["edit_name"];
+                $edit_text = $_POST["edit_text"];
+                switch ($edit_name) {
+                    case "password":
+                        break;
+                    case  "email":
+                        break;
+                    case "date":
+                        break;
+                    case "number":
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        else {
+            $this->PrintMessage("error","edit error", 200 , null);
+        }
+    }
+
     function actionSignIn()
     {
         if(!empty($_POST)) {
@@ -46,13 +73,11 @@ class UserController
         }
     }
 
-    function actionAuthentication()
+    function  actionSignOut()
     {
         session_start();
-        if(isset($_SESSION["login"])) {
-            $this->PrintMessage("success","Login", 200 ,null);
-        }
-        $this->PrintMessage("error","Logout", 400 , null);
+        unset($_SESSION["login"]);
+        $this->PrintMessage("success","LogOut", 200 ,null);
     }
 
     function actionValidate()
@@ -113,10 +138,5 @@ class UserController
             }
 
         }
-    }
-
-    function actionCabinet()
-    {
-        echo "Controller User - Cabinet ";
     }
 }

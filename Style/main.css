@@ -1,0 +1,23 @@
+
+body {
+    background-color: #111b1e!important;
+}
+.navbar {
+   background-color: #2f4c58!important;
+}
+
+main {
+    background-color:white!important;
+}
+
+.card-header{
+    background-color: #63a583!important;
+
+}
+.edit-data {
+    transition: all 2s linear;
+    display: block;
+}
+.navbar-collapse li {
+    padding: 5px;
+}

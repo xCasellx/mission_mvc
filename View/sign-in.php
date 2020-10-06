@@ -4,7 +4,7 @@
         <h1 class="mb-3 text-center">Sign In</h1>
         <div id="form-div" class=" mt-5 my-auto mx-auto ">
             <div class = "status-message  alert d-none text-center p-3 h5 rounded" role="alert"></div>
-            <form action="/sing-in" id="login-form" method="post" class="p-0 m-5">
+            <form action="/sign-in" id="login-form" method="post" class="p-0 m-5">
                 <input required type="email" class="form-control form-control-lg" name="email" placeholder="Email address">
                 <input required type="password" class="border form-control form-control-lg" name="password" autocomplete="on" placeholder="Password">
                 <button type="submit" name="submit" class="float-right btn btn-lg"><strong>Sign In</strong></button>

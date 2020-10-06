@@ -1,15 +1,17 @@
-$("#login-form").submit(function() {
+$("#register-form").submit(function() {
     let form_data = new FormData($(this)[0]);
+    let town_id =$("#city option:selected").attr("data-id");
+    form_data.append("town",  town_id);
     $.ajax({
-        url: "/login-user",
+        url: "/create-user",
         type : "POST",
         cache: false,
         contentType: false,
         processData: false,
         data : form_data,
         success : function(result) {
-            $(location).attr("href","/cabinet");
             printMessage("success",result.message,5000);
+
         },
         error : function(result) {
             printMessage("error",result.responseJSON.message,5000);

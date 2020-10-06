@@ -1,18 +1,14 @@
-main {
-    min-height: 100vh;
-}
 
 #form-div {
     max-width: 70%;
 }
-body {
-    background-color: #1f4e5f;
-}
+
 main {
-    background-color: white;
     color: #1f4e5f;
 }
-
+.status-message {
+    font-size: 150%!important;
+}
 #form-div{
     min-width: 450px;
 }

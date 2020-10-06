@@ -18,6 +18,7 @@ class Rout
     {
         $url = $this->getURL();
         foreach ($this->router as $pattern => $path) {
+            $pattern = "^$pattern$";
             if(preg_match("~$pattern~", $url)){
                 $segment = explode("/", $path);
                 $className =array_shift( $segment)."Controller";
