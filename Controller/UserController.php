@@ -1,6 +1,7 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
 require_once ROOT . "/Model/UserModal.php";
+require_once ROOT . "/core/SendMail.php";
 
 class UserController
 {
@@ -35,7 +36,7 @@ class UserController
         return false;
     }
 
-    function actionEditImage()
+    public function actionEditImage()
     {
         session_start();
         if(isset($_SESSION["login"])) {
@@ -72,7 +73,48 @@ class UserController
 
     }
 
-    function actionEditData()
+    public function actionEmailVerify()
+    {
+        session_start();
+        if(isset($_SESSION["login"])) {
+            if(isset($_GET["hash"])) {
+                $hash = $_GET["hash"];
+                if(!preg_match("~activateEmail$~",$hash )) {
+                    $this->PrintMessage("error","Invalid hash ", 400 , null);
+                }
+                $user = new UserModal();
+                if(!$user->CheckHash($hash)) {
+                    $this->PrintMessage("error","Invalid hash ", 400 , null);
+                }
+                $data = "email_activate = 1 , hash = null";
+                $res = $user->update($data, "hash = '$hash'");
+                $this->PrintMessage("error","" , 400, $res);
+
+            }
+        }
+    }
+
+    public function actionEmailSendVerify()
+    {
+        session_start();
+        if(isset($_SESSION["login"])) {
+            $user_id = $_SESSION["login"];
+            $user = new UserModal();
+            $user_data = $user->GetUserData($user_id);
+            if($user_data["email_activate"] === 1) {
+                $this->PrintMessage("success","Email activated. ", 200 , null);
+            }
+            $mail_send = new SendMail();
+            $hash = $mail_send->sendEmailHash($user_data["email"],"Follow the link to verify your email"
+                                            ,"activateEmail", "email/verify","Email verify");
+            if($user->update("hash = '$hash'","id = ".$user_id)){
+                $this->PrintMessage("success","The letter was sent to the mail", 200 , null);
+            }
+            $this->PrintMessage("error","sending error", 400 , null);
+        }
+    }
+
+    public function actionEditData()
     {
         session_start();
         if($_SESSION["login"]) {
@@ -84,7 +126,6 @@ class UserController
                 if(!$this->checkColumn($edit_name)) {
                     $this->PrintMessage("error","This field does not exist", 400 , null);
                 }
-                $error = "";
                 switch ($edit_name) {
                     case "password":
                         $password = $_POST["password"];
@@ -117,7 +158,7 @@ class UserController
                         $edit_text = htmlspecialchars(strip_tags($edit_text));
                         break;
                 }
-                if($user->updateData($edit_name, $edit_text, $edit_id)) {
+                if($user->update("$edit_name = '$edit_text'", "id = ". $edit_id)) {
                     $data = $user->GetUserData($edit_id);
                     $this->PrintMessage("success","Update success", 200 , $data);
                 }
@@ -126,7 +167,7 @@ class UserController
         $this->PrintMessage("error","edit error", 400 , null);
     }
 
-    function actionSignIn()
+    public function actionSignIn()
     {
         if(!empty($_POST)) {
             if((isset($_POST["email"])) && (isset($_POST["password"])) ) {
@@ -148,14 +189,14 @@ class UserController
         }
     }
 
-    function  actionSignOut()
+    public function  actionSignOut()
     {
         session_start();
         unset($_SESSION["login"]);
-        $this->PrintMessage("success","LogOut", 200 ,null);
+        header("Location:/sign-in");
     }
 
-    function actionValidate()
+    public function actionValidate()
     {
         session_start();
         if(isset($_SESSION["login"])) {
@@ -167,7 +208,7 @@ class UserController
         $this->PrintMessage("error","Logout", 400 , null);
     }
 
-    function actionRegister()
+    public function actionRegister()
     {
         $user = new UserModal();
         if(!empty($_POST)) {

@@ -4,7 +4,6 @@ function maxDate (year) {
     let s = (d.getFullYear()-year)+"-12-01";
     return s;
 }
-
 function  printMessage(type, text , time) {
     $(".status-message").removeClass( "d-none" );
     if ("success" === type) {

@@ -4,6 +4,8 @@
         "login-user" => "User/SignIn",
         "update-user" => "User/EditData",
         "update-image" => "User/EditImage",
+        "email/send/verify" => "User/EmailSendVerify",
+        "email/verify.{1,}" => "User/EmailVerify",
         "validate" => "User/Validate",
         "sign-out" => "User/SignOut",
         "country" => "Location/Country",
@@ -14,5 +16,5 @@
         "cabinet" => "Site/Cabinet",
         "test" => "Site/Test",
          "" => "Site/SignIn",
-        "[a-zA-Z0-9/]{1,}" => "Site/Error404",
+        ".{1,}" => "Site/Error404",
     );

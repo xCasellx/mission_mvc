@@ -10,13 +10,20 @@ $(document).ready(function () {
         success : function(result) {
             let  data = result.data;
             user_data = data;
+            $("#user-image").attr("src", data.image);
             $("#user_first_name").text(data.first_name);
             $("#user_second_name").text(data.second_name);
             $("#user_number").text(data.number);
             $("#user_date").text(data.date);
             $("#user_town").text(data.city+","+data.region+","+data.country);
             $("#user_email").text(data.email);
-            $("#user-image").attr("src", data.image);
+            if( data.email_activate === "0") {
+                let html = `
+                      <div class="alert-danger p-2" id="main-message">
+                        <a href="#" class="p-3 text-decoration-none text-danger" id="email-confirm">Click to confirm mail</a>  
+                      </div>`;
+                $("main").prepend(html);
+            }
         },
         error : function(result) {
 
@@ -24,8 +31,23 @@ $(document).ready(function () {
     })
 })
 
+$(document).on("click", "#email-confirm", function () {
+    $( document ).off( "click", "#email-confirm" );
+    $.ajax({
+        url: "/email/send/verify",
+        type : "POST",
+        success : function(result) {
+            $("#main-message").html(result.message);
+        },
+        error : function(result) {
+            $("#main-message").html("A message has been sent to the mail,failed to send message");
+        }
+    })
+});
+
+
 $("#user-image").error(function() {
-    $(this).attr('src', '../image/nan.png?' + Math.random());
+    $(this).attr('src', '../image/nan.png?');
 });
 
 $(document).on("click","#open-edit-data",function () {

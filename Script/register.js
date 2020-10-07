@@ -11,11 +11,13 @@ $("#register-form").submit(function() {
         data : form_data,
         success : function(result) {
             printMessage("success",result.message,5000);
+            $(location).attr("href","/");
 
         },
         error : function(result) {
             printMessage("error",result.responseJSON.message,5000);
+
         }
     })
-    return fals
+    return false;
 })

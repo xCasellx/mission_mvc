@@ -4,19 +4,20 @@ class UserModal
     private static $data_column = ["first_name", "second_name", "email", "date", "number",
                                     "town" , "password" ];
     private  $data_public = ["first_name", "second_name", "email", "date", "number",
-        "city", "region", "country" , "image" ];
+        "city", "region", "country" , "image", "email_activate" ];
     private $table_name = "user";
+    private $db;
 
     function __construct()
     {
-
+        $this->db = DataBase::getConnection();
     }
 
-    private function GetInParams()
+    private function GetInParams($params)
     {
         $str = "";
-        foreach ( self::$data_column as $data) {
-            $str .="$data = :$data, ";
+        foreach ( $params as $key => $val) {
+            $str .="$key = :$key, ";
         }
         return $str = substr($str,0,-2);;
     }
@@ -26,15 +27,14 @@ class UserModal
         return self::$data_column;
     }
 
-    function GetUserData($id)
+    public function GetUserData($id)
     {
-        $db = DataBase::getConnection();
         $query ='SELECT user.*, city.name AS city , region.name as region , country.name as country FROM user 
             JOIN city ON city.id = user.town 
             JOIN region ON region.id = city.region_id 
             JOIN country ON country.id = region.country_id 
             WHERE user.id = ?';
-        $stmt = $db->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(1, $id);
         if($stmt->execute()){
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -48,25 +48,34 @@ class UserModal
         return false;
     }
 
-    function updateData($element, $new_text, $id)
+    public function update($data, $where)
     {
-        $db = DataBase::getConnection();
-        $query = "UPDATE " . $this->table_name . " SET " .$element. " = :text WHERE id = :id";
-        $stmt = $db ->prepare($query);
-        $new_text = htmlspecialchars(strip_tags($new_text));
-        $stmt->bindParam(":text", $new_text);
-        $stmt->bindParam(":id", $id);
+        $query = "UPDATE " . $this->table_name . " SET " .$data. " WHERE ".$where;
+        $stmt = $this->db->prepare($query);
         if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public function CheckHash($hash)
+    {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE hash = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(1, $hash);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
             return true;
         }
         return false;
     }
 
-    function CheckEmail($email)
+    public function CheckEmail($email)
     {
-        $db = DataBase::getConnection();
+
         $query = "SELECT * FROM " . $this->table_name . " WHERE email = ?";
-        $stmt = $db->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(1, $email);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -75,11 +84,11 @@ class UserModal
         return false;
     }
 
-    function  passwordVerify($password, $id)
+    public function  passwordVerify($password, $id)
     {
-        $db = DataBase::getConnection();
+
         $query = "SELECT password  FROM " . $this->table_name . " WHERE id = ?";
-        $stmt = $db->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(1, $id);
         $stmt->execute();
         if ($stmt->rowCount() <= 0) {
@@ -92,11 +101,10 @@ class UserModal
         return  true;
     }
 
-    function SignIn($email , $password)
+    public function SignIn($email , $password)
     {
-        $db = DataBase::getConnection();
         $query = "SELECT id , email , password  FROM " . $this->table_name . " WHERE email = ?";
-        $stmt = $db->prepare($query);
+        $stmt = $this->db->prepare($query);
         $stmt->bindParam(1, $email);
         $stmt->execute();
         if ($stmt->rowCount() <= 0) {
@@ -109,22 +117,20 @@ class UserModal
         return $user["id"];
     }
 
-    function createAccount($user_data)
+    public function createAccount($user_data)
     {
-        $db = DataBase::getConnection();
-        $in = $this->GetInParams();
+        $in = $this->GetInParams($user_data);
         $query = "INSERT INTO " . $this->table_name . " SET ".$in;
-        $stmt = $db->prepare($query);
+        $stmt = $this->db->prepare($query);
         if (!$stmt) {
-            return $db->errorInfo();
+            return $this->db->errorInfo();
         }
-        $res = array();
         foreach (self::$data_column as $col) {
             $stmt->bindParam(":".$col, $user_data[$col]);
         }
         if ($stmt->execute()) {
             return "success";
         }
-        return $db->errorInfo();
+        return $this->db->errorInfo();
     }
 }

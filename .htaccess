@@ -1,6 +1,6 @@
 RewriteEngine on
 
-RewriteRule ^img/(.*)/user-image.jpg$ user-data/$1/user-image.jpg
+RewriteRule ^img/user-([0-9]{1,})/user-image.jpg$ user-data/user-$1/user-image.jpg
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

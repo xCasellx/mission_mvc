@@ -5,14 +5,16 @@
       <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/Config/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/SiteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/SendMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/SendMail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Model/UserModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserModal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Script/cabinet.js" beforeDir="false" afterPath="$PROJECT_DIR$/Script/cabinet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Script/control.js" beforeDir="false" afterPath="$PROJECT_DIR$/Script/control.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Script/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Script/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/block/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/block/nav.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/cabinet.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/cabinet.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/View/page404.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/page404.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-data/user-58/user-image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/user-data/user-58/user-image.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +78,7 @@
       <updated>1601538696912</updated>
       <workItem from="1601538697877" duration="44826000" />
       <workItem from="1601882243940" duration="27816000" />
-      <workItem from="1601969448750" duration="23781000" />
+      <workItem from="1601969448750" duration="45047000" />
     </task>
     <task id="LOCAL-00001" summary="upd files">
       <created>1601903887244</created>
@@ -126,16 +128,16 @@
     </state>
     <state x="1946" y="-436" width="1305" height="809" maximized="true" key="dock-window-1/0.43.1536.821/1920.-436.1920.1040@0.43.1536.821" timestamp="1601981220690" />
     <state x="1920" y="65" width="1130" height="809" maximized="true" key="dock-window-1/0.43.1536.821/1920.65.1920.1040@0.43.1536.821" timestamp="1601903895107" />
-    <state x="425" y="208" key="run.anything.popup" timestamp="1601985248493">
+    <state x="425" y="208" key="run.anything.popup" timestamp="1602069687074">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="425" y="208" key="run.anything.popup/0.43.1536.821/1920.-436.1920.1040@0.43.1536.821" timestamp="1601985248493" />
+    <state x="425" y="208" key="run.anything.popup/0.43.1536.821/1920.-436.1920.1040@0.43.1536.821" timestamp="1602069687074" />
     <state x="425" y="208" key="run.anything.popup/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601922860612" />
     <state x="425" y="208" key="run.anything.popup/0.43.1536.821@0.43.1536.821" timestamp="1601896091857" />
-    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1601624496935">
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup" timestamp="1602016826404">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
-    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1601624496935" />
+    <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1602016826404" />
     <state x="431" y="185" width="672" height="678" key="search.everywhere.popup/0.43.1536.821@0.43.1536.821" timestamp="1601558353342" />
   </component>
 </project>
