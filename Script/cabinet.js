@@ -31,6 +31,8 @@ $(document).ready(function () {
     })
 })
 
+
+
 $(document).on("click", "#email-confirm", function () {
     $( document ).off( "click", "#email-confirm" );
     $.ajax({
@@ -125,7 +127,8 @@ $(document).on("change","#region", function () {
 
 $("#edit-email").on("click",function () {
     edit_component = $(this).attr('id').replace("edit-","");
-    let html=`<input required type="email" name="edit_text"  class="form-control border-dark border input-text input-edit" 
+    let html=`<input required type="password" name="password" class="mt-2 input-text border-dark border form-control" placeholder="Password"  id="input-password">
+              <input required type="email" name="edit_text"  class="mt-2 form-control border-dark border input-text input-edit" 
               id="input-email" placeholder='`+user_data.email+`'">`
     $("#form-content").html(html);
     $(".modal-title").text("Edit email");
@@ -157,11 +160,6 @@ $("#edit-password").on("click",function () {
     $(".modal-title").text("Edit password");
 });
 
-$('#myModal').on('hide.bs.modal', function() {
-    deleteMessage();
-});
-
-
 $(document).on("submit","#edit-form",function () {
         let form;
         if(edit_component === "town") {
@@ -182,6 +180,8 @@ $(document).on("submit","#edit-form",function () {
         processData: false,
         data : form,
         success : function(result){
+            console.log(result.message);
+            printMessage("success", result.message, 6000);
             let  data = result.data;
             user_data = data;
             $("#user_first_name").text(data.first_name);
@@ -194,7 +194,7 @@ $(document).on("submit","#edit-form",function () {
         },
         error : function(result){
             console.log(result);
-            printMessage("error",result.responseJSON.message);
+            printMessage("error",result.responseJSON.message, 5000);
         }
     })
     return false;
@@ -217,7 +217,7 @@ $(document).on("submit","#edit-form-image",function () {
         },
         error:function (result){
             console.log(result);
-            printMessage("error", result.responseJSON.message);
+            printMessage("error", result.responseJSON.message, 5000);
         }
     });
     return false;

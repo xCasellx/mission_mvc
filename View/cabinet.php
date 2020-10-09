@@ -1,6 +1,7 @@
 <?php require_once "block/header.php" ?>
 <?php require_once "block/nav.php" ?>
     <main class="p-2 container mx-auto">
+        <div class="p-2 status-message"> </div>
         <div class="card mt-2 p-0 container ">
             <div class="text-center text-white card-header"><h3>User information</h3></div>
             <div class="row card-body ">

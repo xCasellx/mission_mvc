@@ -3,7 +3,7 @@ class UserModal
 {
     private static $data_column = ["first_name", "second_name", "email", "date", "number",
                                     "town" , "password" ];
-    private  $data_public = ["first_name", "second_name", "email", "date", "number",
+    private  $data_public = ["id", "first_name", "second_name", "email", "date", "number",
         "city", "region", "country" , "image", "email_activate" ];
     private $table_name = "user";
     private $db;
@@ -44,6 +44,22 @@ class UserModal
             }
             $res["image"] = "http://".$_SERVER['HTTP_HOST']."/img/".$res["image"]."/user-image.jpg";
             return $res;
+        }
+        return false;
+    }
+
+    public function GetFullUserData($id)
+    {
+        $query ='SELECT user.*, city.name AS city , region.name as region , country.name as country FROM user 
+            JOIN city ON city.id = user.town 
+            JOIN region ON region.id = city.region_id 
+            JOIN country ON country.id = region.country_id 
+            WHERE user.id = ?';
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(1, $id);
+        if($stmt->execute()){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
         }
         return false;
     }

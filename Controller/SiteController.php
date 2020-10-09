@@ -5,6 +5,7 @@ class SiteController
     function  __construct()
     {
     }
+
     private function checkLogin()
     {
         session_start();
@@ -13,10 +14,45 @@ class SiteController
         }
         return false;
     }
+    private  function  locationSingIn()
+    {
+        if(!$this->checkLogin()) {
+            header("Location: /sign-in");
+        }
+    }
+    private  function  locationCabinet()
+    {
+        if($this->checkLogin()) {
+            header("Location: /cabinet");
+        }
+    }
     function actionTest(){
         echo $_SERVER['HTTP_HOST'];
     }
 
+    function  actionEmailVerify()
+    {
+        $this->locationSingIn();
+        $script = "email_confirm.js";
+        require_once ROOT . "/View/status.php";
+    }
+    function  actionEmailUpdate()
+    {
+        $this->locationSingIn();
+        $script = "email_update.js";
+        require_once ROOT . "/View/status.php";
+    }
+    function  actionPasswordRecovery()
+    {
+        $this->locationCabinet();
+        $script = "password_recovery.js";
+        require_once ROOT . "/View/recovery-password.php";
+    }
+    function  actionRecovery()
+    {
+        $this->locationCabinet();
+        require_once ROOT . "/View/recovery.php";
+    }
     function  actionError404()
     {
         require_once ROOT . "/View/page404.php";
@@ -24,31 +60,23 @@ class SiteController
 
     function actionRegister()
     {
-        if($this->checkLogin()) {
-            header("Location: /cabinet");
-        }
+        $this->locationCabinet();
         require_once ROOT . "/View/register.php";
     }
     function actionCabinet()
     {
-        if(!$this->checkLogin()) {
-            header("Location: /sign-in");
-        }
+        $this->locationSingIn();
         require_once ROOT . "/View/cabinet.php";
 
     }
     function actionSignIn()
     {
-        if($this->checkLogin()) {
-            header("Location: /cabinet");
-        }
+        $this->locationCabinet();
         require_once ROOT . "/View/sign-in.php";
     }
     function actionComments()
     {
-        if(!$this->checkLogin()) {
-            header("Location: /sign-in");
-        }
+        $this->locationSingIn();
         require_once ROOT . "/View/comments.php";
     }
 }

@@ -11,6 +11,9 @@
                 <a class="text-center text-decoration-none" href="/register">Create account</a>
             </form>
         </div>
+        <div class="container-fluid">
+            <a href="/recovery" id="recover-password" class="text-right text-decoration-none">Recover password</a>
+        </div>
         <script src="../Script/sing-in.js" type="application/javascript"></script>
     </main>
 <?php require_once "block/footer.php" ?>

@@ -21,7 +21,7 @@ class SendMail
         $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $this->mail->SMTPAuth = true;
         $this->mail->Username = 'testalph55@gmail.com';
-        $this->mail->Password = 'QqKSY7DSG';
+        $this->mail->Password = 'QqK!SY7DSG';
         $this->mail->setFrom('testalph55@gmail.com', 'Casell');
     }
 
@@ -34,6 +34,17 @@ class SendMail
         $this->mail->msgHTML("$text <b>link:</b>$link ;");
         $this->mail->send();
         return $hash;
+    }
+
+    public  function sendMassage($email, $text, $subject)
+    {
+        $this->mail->addAddress($email);
+        $this->mail->Subject = $subject;
+        $this->mail->msgHTML("$text");
+        if($this->mail->send()) {
+            return true;
+        }
+        return false;
     }
 
 }

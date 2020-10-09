@@ -87,8 +87,8 @@ class UserController
                     $this->PrintMessage("error","Invalid hash ", 400 , null);
                 }
                 $data = "email_activate = 1 , hash = null";
-                $res = $user->update($data, "hash = '$hash'");
-                $this->PrintMessage("error","" , 400, $res);
+                $user->update($data, "hash = '$hash'");
+                $this->PrintMessage("success","Email confirm" , 200, null);
 
             }
         }
@@ -114,6 +114,81 @@ class UserController
         }
     }
 
+    public function actionPasswordSendRecovery()
+    {
+        if(isset($_POST["email"])) {
+            $user_email = $_POST["email"];
+            $user = new UserModal();
+            if(!$user->CheckEmail($user_email)){
+                $this->PrintMessage("success","The letter was sent to the mail", 200 , null);
+            }
+            $mail_send = new SendMail();
+            $hash = $mail_send->sendEmailHash($user_email,"Follow the link to recover your password"
+                ,"recoveryPassword", "recovery/password","Recovery password");
+            if($user->update("hash = '$hash'","email = '$user_email'")){
+                $this->PrintMessage("success","The letter was sent to the mail", 200 , null);
+            }
+        }
+        $this->PrintMessage("error","sending error", 400 , null);
+    }
+
+    public function actionPasswordRecovery()
+    {
+        if(isset($_POST["hash"])) {
+            $hash = $_POST["hash"];
+            if(!preg_match("~recoveryPassword$~",$hash )) {
+                $this->PrintMessage("error","Invalid hash ", 400 , null);
+            }
+            $password = $_POST["password"];
+            $confirm_password = $_POST["confirm_password"];
+            if (empty($password) || empty($confirm_password)) {
+                $this->PrintMessage("error","Empty password", 400 , null);
+            }
+            if (!preg_match($this->pattern_password, $password)) {
+                $this->PrintMessage("error","The password must be at least 6 or more.
+                              Password must consist of letters of the Latin alphabet (A-z),
+                              numbers (0-9) and special characters.", 400 , null);
+
+            }
+            if ($password !== $confirm_password) {
+                $this->PrintMessage("error","Password mismatch.", 400 , null);
+            }
+            $user = new UserModal();
+            if(!$user->CheckHash($hash)) {
+                $this->PrintMessage("error","Invalid hash ", 400 , null);
+            }
+            $password = password_hash($password, PASSWORD_BCRYPT);
+            $data = "password = '$password', hash = null";
+            if(!$user->update($data, "hash = '$hash'")) {
+                $this->PrintMessage("error","Not a known mistake in password recovery" , 400, null);
+            }
+            $this->PrintMessage("success","Password recovery" , 200, null);
+        }
+
+    }
+
+    public function actionEmailUpdate()
+    {
+        session_start();
+        if(isset($_SESSION["login"])) {
+            if(isset($_GET["hash"])) {
+                $hash = $_GET["hash"];
+                $user_id = $_SESSION["login"];
+                if(!preg_match("~editEmail$~",$hash )) {
+                    $this->PrintMessage("error","Invalid hash ", 400 , null);
+                }
+                $user = new UserModal();
+                $upd_email = $user->GetFullUserData($user_id)["upd_email"];
+                if(!$user->CheckHash($hash)) {
+                    $this->PrintMessage("error","Invalid hash ", 400 , null);
+                }
+                $data = "email = '$upd_email', upd_email = null , hash = null";
+                $user->update($data, "hash = '$hash'");
+                $this->PrintMessage("success","Email update" , 200, null);
+            }
+        }
+    }
+
     public function actionEditData()
     {
         session_start();
@@ -127,10 +202,29 @@ class UserController
                     $this->PrintMessage("error","This field does not exist", 400 , null);
                 }
                 switch ($edit_name) {
+                    #not break;
+                    case  "email":
+                        $password = $_POST["password"];
+                        $email = $_POST["edit_text"];
+                        if (empty($password)) {
+                            $this->PrintMessage("error","Empty password", 400 , null);
+                        }
+                        if (!$user->passwordVerify($password,$edit_id)) {
+                            $this->PrintMessage("error","Incorrect passwords.", 400 , null);
+                        }
+                        if($user->CheckEmail($email)) {
+                            $this->PrintMessage("error","This email already exists.",400, null);
+                        }
+                        $mail_send = new SendMail();
+                        $hash = $mail_send->sendEmailHash($email,"Follow the link to edit your email"
+                            ,"editEmail", "email/update","Email edit");
+                        $user->update("hash = '$hash', upd_email = '$email'","id = ".$edit_id);
+                        $data = $user->GetUserData($edit_id);
+                        $this->PrintMessage("success","The letter was sent to the mail", 200 , $data);
                     case "password":
                         $password = $_POST["password"];
                         $confirm_password = $_POST["confirm_password"];
-                        if (empty($password) && empty($confirm_password)) {
+                        if (empty($password) || empty($confirm_password)) {
                             $this->PrintMessage("error","Empty password", 400 , null);
                         }
                         if (!preg_match($this->pattern_password, $edit_text)) {
@@ -222,24 +316,24 @@ class UserController
                     else $user_data[$column] = $_POST[$column];
                 }
                 else {
-                    self::PrintMessage("error","Fill in all the input fields",400, null);
+                    $this->PrintMessage("error","Fill in all the input fields",400, null);
                 }
             }
             if($user->CheckEmail($user_data["email"])) {
-                self::PrintMessage("error","This email already exists.",400, null);
+                $this->PrintMessage("error","This email already exists.",400, null);
             }
             $temp_date = strtotime($user_data["date"]);
             $temp_upd = strtotime((date('Y')-5).date('-m-d'));
             if ($temp_date > $temp_upd) {
-                self::PrintMessage("error","Wrong date.",400,null);
+                $this->PrintMessage("error","Wrong date.",400,null);
             }
             if(!preg_match($this->pattern_password, $user_data["password"])) {
-                self::PrintMessage("error","The password must be at least 6 or more.
+                $this->PrintMessage("error","The password must be at least 6 or more.
                               Password must consist of letters of the Latin alphabet (A-z),
                               numbers (0-9) and special characters.",400, null);
             }
             if($user_data["password"] !== $_POST["confirm_password"]) {
-                self::PrintMessage("error","Passwords do not match",400,null);
+                $this->PrintMessage("error","Passwords do not match",400,null);
             }
 
             $user_data["password"] = password_hash($user_data["password"], PASSWORD_BCRYPT);
@@ -247,10 +341,10 @@ class UserController
             $res = $user->createAccount($user_data);
 
             if( $res === "success") {
-                self::PrintMessage("success","Create success.",201, null);
+                $this->PrintMessage("success","Create success.",201, null);
             }
             else {
-                self::PrintMessage("error","Create error ",400, $res);
+                $this->PrintMessage("error","Create error ",400, $res);
             }
 
         }

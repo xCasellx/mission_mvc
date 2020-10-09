@@ -13,7 +13,9 @@ function  printMessage(type, text , time) {
         $(".status-message").addClass("alert-danger");
     }
     $(".status-message").text(text);
-    setTimeout(deleteMessage, time);
+    if(time !== null ) {
+        setTimeout(deleteMessage, time);
+    }
 }
 
 function  deleteMessage() {
