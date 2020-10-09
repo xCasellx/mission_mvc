@@ -55,6 +55,7 @@ class SiteController
     }
     function  actionError404()
     {
+        $res = $this->checkLogin();
         require_once ROOT . "/View/page404.php";
     }
 

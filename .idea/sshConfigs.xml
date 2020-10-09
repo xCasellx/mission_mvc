@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="3.22.79.53" id="5097d5fc-2ec6-4e18-ae70-c84ddea23952" keyPath="D:\web\sbase-test-shared-01.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+    </configs>
+  </component>
+</project>

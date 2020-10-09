@@ -19,9 +19,12 @@ $(document).ready(function () {
                     comment.forEach(element => {
                         PrintComment(element);
                         $(".comment-img").error(function() {
-                            $(this).attr('src', '../Image/nan.png');
+                            $(this).attr('src', '../image/nan.png');
                         });
                     })
+                },
+                error : function(result) {
+                   console.log(result)
                 }
             })
         }

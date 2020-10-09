@@ -12,6 +12,7 @@ $("#login-form").submit(function() {
             printMessage("success",result.message,5000);
         },
         error : function(result) {
+           
             printMessage("error",result.responseJSON.message,5000);
         }
     })

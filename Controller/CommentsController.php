@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
 require_once ROOT . "/Model/CommentsModal.php";
-require_once ROOT . "/core/SendMail.php";
+require_once ROOT . "/Core/SendMail.php";
 
 
 class CommentsController

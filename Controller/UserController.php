@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json; charset=UTF-8");
 require_once ROOT . "/Model/UserModal.php";
-require_once ROOT . "/core/SendMail.php";
+require_once ROOT . "/Core/SendMail.php";
 
 class UserController
 {
@@ -58,8 +58,11 @@ class UserController
             $tmp_name = $image["tmp_name"];
             $full_path_image = $full_path . "/user-image.jpg";
             move_uploaded_file($tmp_name, $full_path_image);
+            $oldumask = umask(0);
+            chmod($full_path_image, 0777);
+            umask($oldumask);
             $user = new UserModal();
-            if($user->updateData("image", $fold_name, $edit_id)) {
+            if($user->update("image = '$fold_name'","id = ".$edit_id)) {
                 $data = $user->GetUserData($edit_id);
                 $this->PrintMessage("success","Update success", 200 , $data);
             }

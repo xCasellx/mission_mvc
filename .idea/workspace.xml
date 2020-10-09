@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19cf8e18-3a92-486a-9f8d-07b34e620556" name="Default Changelist" comment="upd files">
-      <change afterPath="$PROJECT_DIR$/Controller/CommentsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model/CommentsModal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Script/comments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Script/email_confirm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Script/email_update.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Script/password_recovery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Script/recovery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/comments.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/recovery-password.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/recovery.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/View/status.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/Config/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/SendMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/Core/SendMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/UserModal.php" beforeDir="false" afterPath="$PROJECT_DIR$/Model/UserModal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Script/cabinet.js" beforeDir="false" afterPath="$PROJECT_DIR$/Script/cabinet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Script/control.js" beforeDir="false" afterPath="$PROJECT_DIR$/Script/control.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/cabinet.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/cabinet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/sign-in.php" beforeDir="false" afterPath="$PROJECT_DIR$/View/sign-in.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-data/user-58/user-image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/user-data/user-58/user-image.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +35,12 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/image" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -90,7 +76,7 @@
       <workItem from="1601969448750" duration="45047000" />
       <workItem from="1602076531740" duration="19653000" />
       <workItem from="1602153747740" duration="3661000" />
-      <workItem from="1602158106278" duration="19043000" />
+      <workItem from="1602158106278" duration="21607000" />
     </task>
     <task id="LOCAL-00001" summary="upd files">
       <created>1601903887244</created>
@@ -110,10 +96,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="upd files" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="112" key="#Deployment" timestamp="1602236557456">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="361" y="112" key="#Deployment/0.43.1536.821/1920.40.1920.1040@0.43.1536.821" timestamp="1602236557456" />
     <state x="395" y="132" key="#Inspections" timestamp="1601559433486">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="395" y="132" key="#Inspections/0.43.1536.821@0.43.1536.821" timestamp="1601559433486" />
+    <state x="345" y="99" key="#SSH_Configurations" timestamp="1602236507526">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="345" y="99" key="#SSH_Configurations/0.43.1536.821/1920.40.1920.1040@0.43.1536.821" timestamp="1602236507526" />
     <state x="617" y="282" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1601620248917">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
@@ -122,6 +116,10 @@
       <screen x="0" y="43" width="1536" height="821" />
     </state>
     <state x="393" y="43" width="750" height="556" key="CommitChangelistDialog2/0.43.1536.821/1920.65.1920.1040@0.43.1536.821" timestamp="1601903900311" />
+    <state x="549" y="209" key="FileChooserDialogImpl" timestamp="1602236500246">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="549" y="209" key="FileChooserDialogImpl/0.43.1536.821/1920.40.1920.1040@0.43.1536.821" timestamp="1602236500246" />
     <state x="540" y="176" key="NewPhpClassDialog" timestamp="1601553394618">
       <screen x="0" y="43" width="1536" height="821" />
     </state>
@@ -133,6 +131,10 @@
     <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821/1920.40.1920.1040@0.43.1536.821" timestamp="1602103729329" />
     <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821/1920.65.1680.1010@0.43.1536.821" timestamp="1602098144857" />
     <state x="568" y="370" key="NewPhpFileDialog/0.43.1536.821@0.43.1536.821" timestamp="1601892931238" />
+    <state x="624" y="352" key="WebDeployment.AddServerDialog.v.1" timestamp="1602236436433">
+      <screen x="0" y="43" width="1536" height="821" />
+    </state>
+    <state x="624" y="352" key="WebDeployment.AddServerDialog.v.1/0.43.1536.821/1920.40.1920.1040@0.43.1536.821" timestamp="1602236436433" />
     <state x="2697" y="-3" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601981176418">
       <screen x="1920" y="-436" width="1920" height="1040" />
     </state>

@@ -23,9 +23,10 @@ class Rout
                 $segment = explode("/", $path);
                 $className =array_shift( $segment)."Controller";
                 $actionName = "action".array_shift($segment);
-                $pathClass = ROOT."\Controller\\$className.php";
+                $pathClass = ROOT."/Controller/$className.php";
 
                 if(file_exists($pathClass)) {
+
                     include_once ($pathClass);
                 }
                 $controller = new $className;
